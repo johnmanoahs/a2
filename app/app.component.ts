@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
   template: `
 	
 	<navbar></navbar>
-
-	<router-outlet></router-outlet>
+	<div class="container-fluid">
+		<router-outlet></router-outlet>
+	</div>
 
   `
 })

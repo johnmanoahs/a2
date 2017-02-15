@@ -8,21 +8,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var http_1 = require("@angular/http");
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var NavbarComponent = (function () {
-    function NavbarComponent(router) {
-        this.router = router;
+require("rxjs/Rx");
+require("rxjs/add/operator/map");
+var UsersService = (function () {
+    function UsersService(_http) {
+        this._http = _http;
     }
-    return NavbarComponent;
+    UsersService.prototype.getUsers = function () {
+        return this._http.get("http://jsonplaceholder.typicode.com/users")
+            .map(function (res) { return res.json(); });
+    };
+    return UsersService;
 }());
-NavbarComponent = __decorate([
-    core_1.Component({
-        selector: 'navbar',
-        templateUrl: 'app/navbar/navbar.component.html',
-        styles: ["\n\n\n\t.nav.navbar-nav .active{\n\t\tbackground-color: black;\n\t}\n\n\n\t"]
-    }),
-    __metadata("design:paramtypes", [router_1.Router])
-], NavbarComponent);
-exports.NavbarComponent = NavbarComponent;
-//# sourceMappingURL=navbar.component.js.map
+UsersService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], UsersService);
+exports.UsersService = UsersService;
+//# sourceMappingURL=users.service.js.map

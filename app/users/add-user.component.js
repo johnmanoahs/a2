@@ -6,16 +6,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var AppComponent = (function () {
-    function AppComponent() {
+var AddUserComponent = (function () {
+    function AddUserComponent() {
     }
-    return AppComponent;
+    return AddUserComponent;
 }());
-AppComponent = __decorate([
+AddUserComponent = __decorate([
     core_1.Component({
-        selector: 'my-app',
-        template: "\n\t\n\t<navbar></navbar>\n\t<div class=\"container-fluid\">\n\t\t<router-outlet></router-outlet>\n\t</div>\n\n  "
+        selector: 'adduser',
+        templateUrl: 'app/users/add-user.component.html',
+        styles: ["\n\n\t.form-container{\n\t\tbackground-color: #f1f1f1;\n\t\tpadding: 30px;\n\t}\n\n\n\t"]
     })
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+], AddUserComponent);
+exports.AddUserComponent = AddUserComponent;
+//# sourceMappingURL=add-user.component.js.map
