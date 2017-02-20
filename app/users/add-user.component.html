@@ -1,25 +1,45 @@
 
-<h3>Add a User</h3>
+<h3>{{ title }}</h3>
 
 <div class="form-container">
 
-<form class="formclass">
+<form [formGroup]="form" class="formclass" (ngSubmit)="OnSubmit()">
 <fieldset>
 	<legend>User</legend>
 
 	<div class="form-group">
 		<label for="name">Name</label>
-		<input type="text" id="name" name="name" class="form-control" />
+		<input type="text" id="name" name="name" class="form-control" 
+				formControlName="name"  [(ngModel)]="user.name"/>
+
+		<div *ngIf="form.controls.name.touched && form.controls.name.errors">
+			<div class="alert alert-danger" *ngIf="form.controls.name.errors.required">
+				Name is a required field
+			</div>
+		</div>
 	</div>
 
 	<div class="form-group">
 		<label for="email">Email</label>
-		<input type="email" id="email" name="email" class="form-control" />
+		<input type="email" id="email" name="email" class="form-control" 
+				formControlName="email" [(ngModel)]="user.email"
+				pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+		 />
+
+		<div *ngIf="form.controls.email.touched && form.controls.email.errors">
+			<div class="alert alert-danger" *ngIf="form.controls.email.errors.required">
+				Email is a required field
+			</div>
+			<div class="alert alert-danger" *ngIf="form.controls.email.errors.pattern">
+				Invalid email format
+			</div>
+		</div>
 	</div>
 
 	<div class="form-group">
 		<label for="phone">Phone</label>
-		<input type="phone" id="phone" name="phone" class="form-control" />
+		<input type="phone" id="phone" name="phone" class="form-control" 
+			formControlName="phone" [(ngModel)]="user.phone"/>
 	</div>
 
 </fieldset>
@@ -29,28 +49,32 @@
 
 	<div class="form-group">
 		<label for="street">Street</label>
-		<input type="text" id="street" name="street" class="form-control" />
+		<input type="text" id="street" name="street" class="form-control" 
+			formControlName="street" [(ngModel)]="user.address.street"/>
 	</div>
 
 	<div class="form-group">
 		<label for="city">City</label>
-		<input type="text" id="city" name="city" class="form-control" />
+		<input type="text" id="city" name="city" class="form-control" 
+			formControlName="city" [(ngModel)]="user.address.city"/>
 	</div>
 
 	<div class="form-group">
 		<label for="suite">Suite</label>
-		<input type="text" id="suite" name="suite" class="form-control" />
+		<input type="text" id="suite" name="suite" class="form-control" 
+			formControlName="suite" [(ngModel)]="user.address.suite"/>
 	</div>
 
 	<div class="form-group">
 		<label for="zipcode">Zipcode</label>
-		<input type="text" id="zipcode" name="zipcode" class="form-control" />
+		<input type="text" id="zipcode" name="zipcode" class="form-control" 
+			formControlName="zipcode" [(ngModel)]="user.address.zipcode"/>
 	</div>
 
 </fieldset>
 	
 	<div class="form-group">
-		<input type="submit" class="btn btn-primary" />
+		<input type="submit" class="btn btn-primary" [disabled]="!form.valid"/>
 	</div>
 	
 </form>

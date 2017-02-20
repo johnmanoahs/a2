@@ -1,9 +1,11 @@
 
 <h3>Users</h3>
 
-<div>
+<!-- <div>
 	<i *ngIf="_isLoading" class="fa fa-spinner fa-spin fa-3x"></i>
-</div>
+</div> -->
+
+<loading [visible]="isLoading"></loading>
 
 <p>
 	<a class="btn btn-primary" routerLink="new">Add New User</a>
@@ -20,7 +22,15 @@
 	<tr *ngFor="let user of _users">
 		<td>{{ user.name }}</td>
 		<td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
-		<td class="centered"><i class="glyphicon glyphicon-edit"></i></td>
-		<td class="centered"><i class="glyphicon glyphicon-remove-circle"></i></td>
+		<td class="centered">
+			<a (click)="editUser(user.id)">
+				<i class="glyphicon glyphicon-edit"></i>
+			</a>
+		</td>
+		<td class="centered">
+			<a (click)="deleteUser(user)">
+				<i class="glyphicon glyphicon-remove-circle"></i>
+			</a>
+		</td>
 	</tr>
 </table>

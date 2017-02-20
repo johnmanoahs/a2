@@ -12,9 +12,13 @@ var app_component_1 = require("./app.component");
 var users_module_1 = require("./users/users.module");
 var posts_module_1 = require("./posts/posts.module");
 var navbar_module_1 = require("./navbar/navbar.module");
+var shared_module_1 = require("./shared/shared.module");
 var home_component_1 = require("./home.component");
 var not_found_component_1 = require("./not-found.component");
+//import { LoadingComponent } from './loading.component';
 var app_routing_1 = require("./app.routing");
+//import { PostsRouting } from './posts/posts.routing';
+//import { UsersRouting } from './users/users.routing';
 var AppModule = (function () {
     function AppModule() {
     }
@@ -27,6 +31,9 @@ AppModule = __decorate([
             users_module_1.UsersModule,
             posts_module_1.PostsModule,
             navbar_module_1.NavbarModule,
+            shared_module_1.SharedModule,
+            //PostsRouting,
+            //UsersRouting,
             app_routing_1.routing
         ],
         declarations: [

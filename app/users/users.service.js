@@ -10,15 +10,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var http_1 = require("@angular/http");
 var core_1 = require("@angular/core");
+//import { usertypes } from './user-types'
 require("rxjs/Rx");
 require("rxjs/add/operator/map");
 var UsersService = (function () {
     function UsersService(_http) {
         this._http = _http;
+        this._url = "http://jsonplaceholder.typicode.com/users";
     }
+    //getUsers() : Observable<usertypes>{
     UsersService.prototype.getUsers = function () {
-        return this._http.get("http://jsonplaceholder.typicode.com/users")
+        return this._http.get(this._url)
             .map(function (res) { return res.json(); });
+    };
+    UsersService.prototype.getUser = function (userid) {
+        return this._http.get(this._url + '/' + userid)
+            .map(function (res) { return res.json(); });
+    };
+    UsersService.prototype.addUser = function (user) {
+        return this._http.post(this._url, JSON.stringify(user))
+            .map(function (res) { return res.json(); });
+    };
+    UsersService.prototype.updateUser = function (user) {
+        return this._http.put(this.userURL(user.id), JSON.stringify(user))
+            .map(function (res) { return res.json(); });
+    };
+    UsersService.prototype.deleteUser = function (userid) {
+        return this._http.delete(this.userURL(userid))
+            .map(function (res) { return res.json(); });
+    };
+    UsersService.prototype.userURL = function (userid) {
+        return this._url + '/' + userid;
     };
     return UsersService;
 }());

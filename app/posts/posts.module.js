@@ -6,7 +6,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var forms_1 = require("@angular/forms");
+var shared_module_1 = require("../shared/shared.module");
 var posts_component_1 = require("./posts.component");
+var app_routing_1 = require("../app.routing");
+var posts_routing_1 = require("./posts.routing");
+var posts_service_1 = require("./posts.service");
+//import { LoadingComponent } from '../loading.component';
 var PostsModule = (function () {
     function PostsModule() {
     }
@@ -14,13 +21,20 @@ var PostsModule = (function () {
 }());
 PostsModule = __decorate([
     core_1.NgModule({
-        imports: [],
+        imports: [
+            common_1.CommonModule,
+            shared_module_1.SharedModule,
+            forms_1.FormsModule, forms_1.ReactiveFormsModule,
+            posts_routing_1.PostsRouting,
+            app_routing_1.routing
+        ],
         declarations: [
             posts_component_1.PostsComponent
         ],
         exports: [
             posts_component_1.PostsComponent
-        ]
+        ],
+        providers: [posts_service_1.PostsService]
     })
 ], PostsModule);
 exports.PostsModule = PostsModule;
